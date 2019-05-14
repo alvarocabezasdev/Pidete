@@ -1,5 +1,7 @@
 {
   "name": "Pidete",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

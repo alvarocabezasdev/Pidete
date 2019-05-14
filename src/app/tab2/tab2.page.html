@@ -1,9 +1,55 @@
+
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Cart</ion-title>
   </ion-toolbar>
 </ion-header>
+ 
+<ion-content>
 
-<ion-content></ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Arrastra para refrescar" refreshingSpinner="crescent"
+          refreshingText="Cargando...">
+        </ion-refresher-content>
+</ion-refresher>
+
+     
+<div class="cuadricula">
+<ion-card class="card" *ngFor="let item of listadoPanel;let i = index">
+    <ion-card-content>
+    
+        <ion-img src="{{item.imagen}}"></ion-img>
+      <ion-grid>
+      <ion-row>
+          <h3>{{ item.producto }}</h3>
+
+      <ion-row>
+      <ion-col size="6">
+          <h3>{{ item.precio }}</h3>
+
+      </ion-col>
+      <ion-col offset="6" size="3">
+          <ion-img src="{{item.imagen}}"></ion-img>
+
+      </ion-col>
+      </ion-row>
+
+      </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+</ion-card>
+</div>
+
+
+  
+
+
+
+      
+      
+</ion-content>
+
