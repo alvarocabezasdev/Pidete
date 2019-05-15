@@ -10,19 +10,27 @@ import { Observable } from 'rxjs';
 export class Service {
 
   productos: AngularFirestoreCollection<any>;
+  mesa: AngularFirestoreCollection<any>;
+
+
+  comanda = [];
+
  
 
   constructor(private fireStore: AngularFirestore,
     private http: HttpClient) {
 
     this.productos = fireStore.collection<any>(environment.firebaseConfig.productos);
+    
   }
 
-  leeRegistro(): Observable<firebase.firestore.QuerySnapshot> {
+  //PRODUCTOS
+
+  leerListadoProductos(): Observable<firebase.firestore.QuerySnapshot> {
     return this.productos.get();
   }
 
-  agregaRegistro(datos): Promise<firebase.firestore.DocumentReference> {
+  agregarRegistro(datos): Promise<firebase.firestore.DocumentReference> {
     return this.productos.add(datos);
   }
 
@@ -31,6 +39,21 @@ export class Service {
   return this.productos.doc(id).delete();
     
 }
+
+  //PRODUCTOS
+
+
+  //COMANDA
+
+  agregarProductoComanda(producto){
+    this.comanda.push(producto);
+  }
+
+  leerComanda(){
+    return this.comanda;
+  }
+
+  //COMANDA
 
 
 }

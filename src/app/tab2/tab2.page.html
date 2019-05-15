@@ -18,29 +18,30 @@
 
      
 <div class="cuadricula">
-<ion-card class="card" *ngFor="let item of listadoPanel;let i = index">
-    <ion-card-content>
-    
-        <ion-img src="{{item.imagen}}"></ion-img>
-      <ion-grid>
-      <ion-row>
-          <h3>{{ item.producto }}</h3>
+<ion-card *ngFor="let item of listadoPanel;let i = index">
+<div class="card">
+  <div class="imagen">
+    <!--<ion-img src="{{item.imagen}}"></ion-img>-->
+  </div>
 
-      <ion-row>
-      <ion-col size="6">
-          <h3>{{ item.precio }}</h3>
+  <div class="descripcion">
 
-      </ion-col>
-      <ion-col offset="6" size="3">
-          <ion-img src="{{item.imagen}}"></ion-img>
+  <div class="producto">
+    <strong><h3>{{ item.producto }}</h3></strong>
+  </div>
+  
+  <div class="precio">
+    <strong><h3>{{ item.precio }}€</h3></strong>
+  </div>
 
-      </ion-col>
-      </ion-row>
+  <div class="boton">
+      <ion-img (click)="agregarProductoComanda(item)" src="../assets/imagenes/add.png"></ion-img>
+  </div>
 
-      </ion-row>
-      </ion-grid>
-
-    </ion-card-content>
+</div>
+</div>
+  
+  
 </ion-card>
 </div>
 

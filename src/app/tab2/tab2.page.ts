@@ -24,7 +24,7 @@ export class Tab2Page {
 
 
   ionViewDidEnter() {
-    this.servicio.leeRegistro().subscribe((querySnapshot) => {
+    this.servicio.leerListadoProductos().subscribe((querySnapshot) => {
       this.listado = [];
       querySnapshot.forEach((doc) => {
         this.listado.push({ id: doc.id, ...doc.data() });
@@ -59,7 +59,7 @@ export class Tab2Page {
 
   actualizarPage() {
 
-    this.servicio.leeRegistro().subscribe((querySnapshot) => {
+    this.servicio.leerListadoProductos().subscribe((querySnapshot) => {
       this.listado = [];
       querySnapshot.forEach((doc) => {
         this.listado.push({ id: doc.id, ...doc.data() });
@@ -72,7 +72,7 @@ export class Tab2Page {
   }
 
   doRefresh(refresher) {
-    this.servicio.leeRegistro().subscribe(querySnapshot => {
+    this.servicio.leerListadoProductos().subscribe(querySnapshot => {
         this.listado = [];
         
         querySnapshot.forEach((doc) => {
@@ -83,6 +83,19 @@ export class Tab2Page {
         refresher.target.complete();
       });
 }
+
+  agregarProductoComanda(producto){
+
+    let prod = {
+      producto: producto.producto,
+      imagen: producto.imagen,
+      precio: producto.precio
+    }
+
+    this.servicio.agregarProductoComanda(prod);
+
+  
+  }
 
 
 

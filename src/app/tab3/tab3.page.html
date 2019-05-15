@@ -6,4 +6,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Arrastra para refrescar" refreshingSpinner="crescent"
+          refreshingText="Cargando...">
+        </ion-refresher-content>
+</ion-refresher>
+
+<ion-list>
+  <ion-item ngFor="let item of listadoPanel.items;let i = index">
+    <!--<ion-img src="{{item.imagen}}" ></ion-img>-->
+    <h3>{{item.producto}}</h3>
+    <h3>{{item.precio}}</h3>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>

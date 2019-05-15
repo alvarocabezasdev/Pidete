@@ -15,7 +15,8 @@
       messagingSenderId: "522443113973",
       appId: "1:522443113973:web:70c05daf30858071",
       productos: "productos",
-      ofertas: "ofertas",
+      mesa1: "mesa1",
+      mesa2: "mesa2",
 
     }
   };
