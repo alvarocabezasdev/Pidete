@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Mi pedido
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,8 @@
 <ion-content>
 
 <ion-list>
-  <ion-item *ngFor="let item of listadoPanel;let i = index">
+
+  <ion-item (click)="borrarUnidad(item)" *ngFor="let item of listadoPanel;let i = index">
   <div class="imagen">
         <ion-img src="{{item.imagen}}"></ion-img>
   </div>
@@ -28,4 +29,17 @@
 
 </ion-list>
 
+
 </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+    <div class="pie" >
+       <div class="total">
+      <h2><strong>{{totalComanda()}}€</strong></h2>
+    </div>
+    <ion-button class="boton" >Pídete</ion-button>
+ 
+    </div>
+    </ion-toolbar>
+</ion-footer>

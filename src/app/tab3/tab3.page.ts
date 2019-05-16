@@ -20,6 +20,7 @@ export class Tab3Page {
    ) {
 
     this.presentLoading("Cargando...");
+
     this.loadingController.dismiss();
     this.listadoPanel = this.servicio.leerComanda();
    
@@ -33,6 +34,11 @@ export class Tab3Page {
 
   }
 
+  ionViewDidEnter(){
+    this.listadoPanel = this.servicio.leerComanda();
+
+  }
+
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg,
@@ -40,6 +46,21 @@ export class Tab3Page {
     });
     return await myloading.present();
 }
+
+  borrarUnidad(producto){
+    console.log(producto);
+  }
+
+  totalComanda(){
+
+    let total:number = 0;
+
+    for (let producto of this.listadoPanel) {
+      total = total + producto.precio;
+  }
+    return total;
+
+  }
 
 
 }
