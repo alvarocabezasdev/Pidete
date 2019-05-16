@@ -86,11 +86,16 @@ export class Tab2Page {
 
   agregarProductoComanda(producto){
 
+    let cantidad = 1;
+
     let prod = {
       producto: producto.producto,
       imagen: producto.imagen,
-      precio: producto.precio
+      precio: producto.precio,
+      cantidad: cantidad,
     }
+
+
 
     this.servicio.agregarProductoComanda(prod);
 

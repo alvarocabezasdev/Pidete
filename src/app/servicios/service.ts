@@ -14,6 +14,7 @@ export class Service {
 
 
   comanda = [];
+  listado = [];
 
  
 
@@ -46,14 +47,32 @@ export class Service {
   //COMANDA
 
   agregarProductoComanda(producto){
+    
     this.comanda.push(producto);
+
   }
 
   leerComanda(){
+    for(var i=0; i<this.comanda.length; i++){
+
+      for(var j=i+1; j<this.comanda.length; j++){
+
+        if(this.comanda[i].producto == this.comanda[j].producto){
+          this.comanda[i].cantidad = this.comanda[i].cantidad + 1;
+          this.comanda[i].precio = this.comanda[i].precio + this.comanda[j].precio;
+          this.comanda.splice(j,1);
+        }
+
+      }
+
+    }
+
     return this.comanda;
+  
   }
 
   //COMANDA
 
 
 }
+

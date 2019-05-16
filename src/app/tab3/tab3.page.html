@@ -8,18 +8,22 @@
 
 <ion-content>
 
-
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Arrastra para refrescar" refreshingSpinner="crescent"
-          refreshingText="Cargando...">
-        </ion-refresher-content>
-</ion-refresher>
-
 <ion-list>
-  <ion-item ngFor="let item of listadoPanel.items;let i = index">
-    <!--<ion-img src="{{item.imagen}}" ></ion-img>-->
-    <h3>{{item.producto}}</h3>
-    <h3>{{item.precio}}</h3>
+  <ion-item *ngFor="let item of listadoPanel;let i = index">
+  <div class="imagen">
+        <ion-img src="{{item.imagen}}"></ion-img>
+  </div>
+  <div class="producto" col-6>
+        <p>{{item.producto}}</p>
+  </div>
+
+  <div class="cantidad" col-3>
+        <p>x<strong>{{item.cantidad}}</strong></p>
+  </div>
+
+  <div class="precio" col-3>
+        <p>{{item.precio}}€</p>
+  </div>
   </ion-item>
 
 </ion-list>
