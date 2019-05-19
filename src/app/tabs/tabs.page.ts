@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Scan } from '../servicios/scan';
 
 @Component({
   selector: 'app-tabs',

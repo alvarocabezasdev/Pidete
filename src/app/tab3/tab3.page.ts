@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Service } from '../servicios/service';
 import { LoadingController, ModalController } from '@ionic/angular';
+import { Scan } from '../servicios/scan';
+
 
 @Component({
   selector: 'app-tab3',
@@ -16,7 +18,10 @@ export class Tab3Page {
 
   constructor(public servicio: Service,
     public loadingController: LoadingController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public scan: Scan
+   
+    
    ) {
 
     this.presentLoading("Cargando...");
