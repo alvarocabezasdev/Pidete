@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class Service {
 
   productos: AngularFirestoreCollection<any>;
-  mesa: AngularFirestoreCollection<any>;
+  mesa: any;
 
 
   comanda = [];
@@ -69,6 +69,41 @@ export class Service {
 
     return this.comanda;
   
+  }
+
+  mandarComanda(listado, mesa){
+
+    switch(mesa){
+      case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa1);break;
+      case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa2);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa3);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
+
+    }
+
+    for(let producto of listado) {
+
+      let prod = {
+        producto: producto.producto,
+        precio: producto.precio,
+        estado: false,
+        cantidad: producto.cantidad,
+      }
+
+      this.mesa.add(prod);
+
+    }
+    
+  }
+
+  borrarComanda(id, mesa): Promise<void>{
+    
+  return this.productos.doc(id).delete();
+    
+}
+
+  leerComandas(mesa){
+    return this.productos.get();
   }
 
   //COMANDA

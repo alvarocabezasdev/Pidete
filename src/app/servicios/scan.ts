@@ -1,3 +1,4 @@
+import { Service } from './service';
 import { Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
@@ -9,14 +10,17 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 export class Scan {
 
 
-  constructor(private barcodeScanner: BarcodeScanner) { }
+  constructor(private barcodeScanner: BarcodeScanner,
+              public servicio: Service
+              ) { }
 
 
   scan(){
       
   this.barcodeScanner.scan().then(barcodeData => {
-    
-   console.log('Barcode data', barcodeData);
+
+    this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
+
 
   }).catch(err => {
       console.log('Error', err);

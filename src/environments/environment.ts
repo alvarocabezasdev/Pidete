@@ -17,6 +17,8 @@
       productos: "productos",
       mesa1: "mesa1",
       mesa2: "mesa2",
+      mesa3: "mesa3",
+      mesa4: "mesa4",
 
     }
   };

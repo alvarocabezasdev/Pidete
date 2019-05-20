@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Service } from '../servicios/service';
-import { LoadingController, ModalController} from '@ionic/angular';
+import { LoadingController, ModalController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -18,7 +18,8 @@ export class Tab2Page {
 
   constructor(public servicio: Service,
     public loadingController: LoadingController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public toastController: ToastController
    ) { }
 
 
@@ -33,6 +34,16 @@ export class Tab2Page {
       this.listadoPanel = this.listado;
 
     });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Producto añadido',
+      duration: 1000,
+      position: 'bottom',
+      color: "success"
+    });
+    toast.present();
   }
 
   async presentLoading(msg) {
@@ -98,6 +109,7 @@ export class Tab2Page {
 
 
     this.servicio.agregarProductoComanda(prod);
+    this.presentToast();
 
   
   }

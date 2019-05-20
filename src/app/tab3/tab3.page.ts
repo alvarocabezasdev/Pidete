@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Service } from '../servicios/service';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Scan } from '../servicios/scan';
 
 
@@ -14,12 +14,14 @@ export class Tab3Page {
 
   listado = [];
   listadoPanel = [];
+  cantidad = 0;
 
 
   constructor(public servicio: Service,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    public scan: Scan
+    public scan: Scan,
+    public toastController: ToastController
    
     
    ) {
@@ -44,6 +46,15 @@ export class Tab3Page {
 
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Producto añadido',
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
+  }
+
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg,
@@ -62,9 +73,14 @@ export class Tab3Page {
 
     for (let producto of this.listadoPanel) {
       total = total + producto.precio;
+      this.cantidad = this.cantidad + producto.cantidad;
   }
     return total;
 
+  }
+
+  getCantidad(){
+    return this.cantidad;
   }
 
 
