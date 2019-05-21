@@ -20,6 +20,7 @@ export class Scan {
   this.barcodeScanner.scan().then(barcodeData => {
 
     this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
+    this.servicio.setMesa(barcodeData.text);
 
 
   }).catch(err => {

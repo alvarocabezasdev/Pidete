@@ -3,6 +3,9 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { resolve } from 'url';
+import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,8 @@ export class Service {
 
   productos: AngularFirestoreCollection<any>;
   mesa: any;
-
+  mesaLocalStorage: string;
+  value: string;
 
   comanda = [];
   listado = [];
@@ -19,7 +23,10 @@ export class Service {
  
 
   constructor(private fireStore: AngularFirestore,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private storage: Storage,
+    
+    ) {
 
     this.productos = fireStore.collection<any>(environment.firebaseConfig.productos);
     
@@ -107,6 +114,26 @@ export class Service {
   }
 
   //COMANDA
+
+  //MESA
+ 
+
+  setMesa(mesa:string){
+    
+    this.storage.set('mesa', mesa);  
+    
+  }
+
+  //Obtiene el valor de mesa en local storage y lo setea a mesalocalstorage
+  getMesa(){
+
+    return this.storage.get('mesa');
+
+  }
+
+
+
+  //MESA
 
 
 }

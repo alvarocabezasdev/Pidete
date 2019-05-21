@@ -26,9 +26,9 @@ export class Tab3Page {
     
    ) {
 
-    this.presentLoading("Cargando...");
+    //this.presentLoading("Cargando...");
 
-    this.loadingController.dismiss();
+    //this.loadingController.dismiss();
     this.listadoPanel = this.servicio.leerComanda();
    
 
@@ -76,6 +76,7 @@ export class Tab3Page {
       this.cantidad = this.cantidad + producto.cantidad;
   }
     return total;
+    
 
   }
 
