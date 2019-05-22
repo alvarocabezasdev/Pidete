@@ -21,7 +21,7 @@ export class Tab1Page {
 
   ionViewWillEnter(){
     this.getMesa();
-
+    
   }
 
   ionViewDidEnter(){

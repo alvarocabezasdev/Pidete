@@ -31,7 +31,6 @@ export class Tab3Page {
     //this.loadingController.dismiss();
     this.listadoPanel = this.servicio.leerComanda();
    
-
    }
 
    ionViewWillEnter() {

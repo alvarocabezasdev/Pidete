@@ -103,13 +103,13 @@ export class Service {
     
   }
 
-  borrarComanda(id, mesa): Promise<void>{
+  borrarComanda(){
     
-  return this.productos.doc(id).delete();
+  this.comanda.splice(0,this.comanda.length);
     
 }
 
-  leerComandas(mesa){
+  leerComandas(){
     return this.productos.get();
   }
 
