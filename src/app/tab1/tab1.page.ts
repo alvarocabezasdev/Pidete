@@ -8,16 +8,34 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  mesa: string;
+  mesa: any;
+  listadoPanel = [];
+  listado = [];
+  cantidad: number = 0;
 
   constructor(public servicio: Service){
     this.getMesa();
+
   }
 
+
+  ionViewWillEnter(){
+    this.getMesa();
+
+  }
 
   ionViewDidEnter(){
     this.getMesa();
 
+    this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
+      this.listado = [];
+      querySnapshot.forEach((doc) => {
+        this.listado.push({ id: doc.id, ...doc.data() });
+      });
+
+      this.listadoPanel = this.listado;
+
+    });
   }
 
 
@@ -27,5 +45,20 @@ export class Tab1Page {
       this.mesa = value;
     })
   }
+
+  totalComanda(){
+
+    let total:number = 0;
+
+    for (let producto of this.listadoPanel) {
+      total = total + producto.precio;
+      this.cantidad = this.cantidad + producto.cantidad;
+  }
+    return total;
+    
+
+  }
+
+
 
 }

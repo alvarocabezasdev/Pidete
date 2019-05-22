@@ -7,5 +7,37 @@
 </ion-header>
 
 <ion-content>
-  <p>{{this.mesa}}</p>
+
+<ion-list>
+
+  <ion-item *ngFor="let item of listadoPanel;let i = index">
+  
+  <div class="producto" col-6>
+        <p>{{item.producto}}</p>
+  </div>
+
+  <div class="cantidad" col-3>
+        <p>x<strong>{{item.cantidad}}</strong></p>
+  </div>
+
+  <div class="precio" col-3>
+        <p>{{item.precio}}€</p>
+  </div>
+  </ion-item>
+
+</ion-list>
+
+
 </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+    <div class="pie" >
+       <div class="total">
+      <h2><strong>{{totalComanda()}}€</strong></h2>
+    </div>
+    <ion-button class="boton" >Pedir cuenta</ion-button>
+ 
+    </div>
+    </ion-toolbar>
+</ion-footer>

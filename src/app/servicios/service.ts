@@ -4,8 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
-import { resolve } from 'url';
-import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-acce
 export class Service {
 
   productos: AngularFirestoreCollection<any>;
-  mesa: any;
+  mesa: AngularFirestoreCollection<any>;
   mesaLocalStorage: string;
   value: string;
 
@@ -29,12 +28,13 @@ export class Service {
     ) {
 
     this.productos = fireStore.collection<any>(environment.firebaseConfig.productos);
-    
+
   }
 
   //PRODUCTOS
 
   leerListadoProductos(): Observable<firebase.firestore.QuerySnapshot> {
+    console.log(this.productos.get());
     return this.productos.get();
   }
 
@@ -116,6 +116,29 @@ export class Service {
   //COMANDA
 
   //MESA
+
+
+  leerMesa(mesa):  Observable<firebase.firestore.QuerySnapshot> {
+   
+    switch(mesa){
+      case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa1);break;
+      case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa2);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa3);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
+
+    }
+
+    console.log(this.mesa.get());
+
+    return this.mesa.get();
+
+  }
+
+  borrarMesa(id): Promise<void>{
+    
+  return this.mesa.doc(id).delete();
+    
+}
  
 
   setMesa(mesa:string){
@@ -130,6 +153,9 @@ export class Service {
     return this.storage.get('mesa');
 
   }
+
+
+
 
 
 
