@@ -84,7 +84,7 @@ export class Service {
       case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa1);break;
       case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa2);break;
       case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa3);break;
-      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
+      case "mesa4": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
 
     }
 
@@ -124,7 +124,7 @@ export class Service {
       case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa1);break;
       case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa2);break;
       case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa3);break;
-      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
+      case "mesa4": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.mesa4);break;
 
     }
 

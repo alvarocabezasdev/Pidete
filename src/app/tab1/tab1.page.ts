@@ -14,18 +14,18 @@ export class Tab1Page {
   cantidad: number = 0;
 
   constructor(public servicio: Service){
-    this.getMesa();
+    this.mesa = this.getMesa();
 
   }
 
 
   ionViewWillEnter(){
-    this.getMesa();
+    this.mesa = this.getMesa();
     
   }
 
   ionViewDidEnter(){
-    this.getMesa();
+    this.mesa = this.getMesa();
 
     this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
       this.listado = [];
