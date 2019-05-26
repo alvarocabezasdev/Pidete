@@ -61,4 +61,12 @@ export class Tab1Page {
 
 
 
+  pedirCuenta(){
+
+
+
+  }
+
+
+
 }

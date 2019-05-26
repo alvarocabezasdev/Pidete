@@ -83,5 +83,13 @@ export class Tab3Page {
     return this.cantidad;
   }
 
+  activarBoton(){
+    if(this.totalComanda()>0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
 
 }

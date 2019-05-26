@@ -19,6 +19,10 @@
       mesa2: "mesa2",
       mesa3: "mesa3",
       mesa4: "mesa4",
+      cuentaMesa1: "false",
+      cuentaMesa2: "false",
+      cuentaMesa3: "false",
+      cuentaMesa4: "false",
 
     }
   };

@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title *ngIf="this.mesa">
       {{this.mesa}}
+    </ion-title>
+    <ion-title *ngIf="!this.mesa">
+      Mi mesa
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -36,7 +39,7 @@
        <div class="total">
       <h2><strong>{{totalComanda()}}€</strong></h2>
     </div>
-    <ion-button class="boton" >Pedir cuenta</ion-button>
+    <ion-button class="boton" (click)="pedirCuenta()" [disabled]="!listadoPanel.length">Pedir cuenta</ion-button>
  
     </div>
     </ion-toolbar>

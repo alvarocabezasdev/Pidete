@@ -139,6 +139,10 @@ export class Service {
   return this.mesa.doc(id).delete();
     
 }
+
+  resetLocalMesa(){
+    this.storage.set('mesa', "");
+  }
  
 
   setMesa(mesa:string){
@@ -151,6 +155,20 @@ export class Service {
   getMesa(){
 
     return this.storage.get('mesa');
+
+  }
+
+  pediCuenta(mesa){
+
+    switch(mesa){
+      case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa1);break;
+      case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa2);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa3);break;
+      case "mesa4": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa4);break;
+
+    }
+
+    this.mesa.add("true");
 
   }
 
