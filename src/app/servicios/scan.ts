@@ -43,8 +43,11 @@ export class Scan {
     }else if(!this.mesa){
 
       this.servicio.setMesa(barcodeData.text);
-      this.mesa = this.servicio.getMesa();
       
+      this.servicio.getMesa().then((value)=>{
+        this.mesa = value;
+      })
+
       this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
       this.servicio.borrarComanda();
       this.navController.navigateRoot("tab1");

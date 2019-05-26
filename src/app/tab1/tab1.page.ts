@@ -10,6 +10,7 @@ export class Tab1Page {
 
   mesa: any;
   listadoPanel = [];
+  cuenta = [];
   listado = [];
   cantidad: number = 0;
 
@@ -66,6 +67,10 @@ export class Tab1Page {
     this.servicio.pediCuenta(this.mesa);
 
   }
+
+
+  
+
 
 
 

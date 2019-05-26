@@ -109,6 +109,19 @@ export class Service {
     
 }
 
+  borrarUnidad(item){
+    if(item.cantidad==1){
+      this.comanda.splice(this.comanda.indexOf(item),1);
+    }else{
+      
+      this.comanda[this.comanda.indexOf(item)].precio = this.comanda[this.comanda.indexOf(item)].precio -
+      this.comanda[this.comanda.indexOf(item)].precio/this.comanda[this.comanda.indexOf(item)].cantidad;
+      this.comanda[this.comanda.indexOf(item)].cantidad = this.comanda[this.comanda.indexOf(item)].cantidad -1;
+
+
+    }
+  }
+
   leerComandas(){
     return this.productos.get();
   }
@@ -158,6 +171,12 @@ export class Service {
 
   }
 
+
+
+  //MESA
+
+  //CUENTA
+
   pediCuenta(mesa){
 
     switch(mesa){
@@ -181,17 +200,24 @@ export class Service {
 
     });
 
+  }
 
-    
+  cuentaPedida(mesa){
 
+    switch(mesa){
+      case "mesa1": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa1);break;
+      case "mesa2": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa2);break;
+      case "mesa3": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa3);break;
+      case "mesa4": this.mesa = this.fireStore.collection<any>(environment.firebaseConfig.cuentaMesa4);break;
+
+    }
+
+    return this.mesa.get();
   }
 
 
 
-
-
-
-  //MESA
+  //CUENTA
 
 
 }

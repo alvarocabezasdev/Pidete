@@ -45,11 +45,12 @@ export class Tab3Page {
 
   }
 
-  async presentToast() {
+  async presentToast(msg) {
     const toast = await this.toastController.create({
-      message: 'Producto añadido',
-      duration: 2000,
+      message: msg,
+      duration: 1000,
       position: 'bottom',
+      color: 'danger'
     });
     toast.present();
   }
@@ -62,17 +63,12 @@ export class Tab3Page {
     return await myloading.present();
 }
 
-  borrarUnidad(producto){
-    console.log(producto);
-  }
-
   totalComanda(){
 
     let total:number = 0;
 
     for (let producto of this.listadoPanel) {
       total = total + producto.precio;
-      this.cantidad = this.cantidad + producto.cantidad;
   }
     return total;
     
@@ -89,6 +85,19 @@ export class Tab3Page {
     }else{
       return true;
     }
+  }
+
+  borrarUnidad(producto){
+
+    this.servicio.borrarUnidad(producto);
+ 
+
+    this.presentToast("Producto eliminado");
+
+    this.totalComanda();
+    this.getCantidad();
+
+
   }
 
 
