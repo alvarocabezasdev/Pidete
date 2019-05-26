@@ -63,7 +63,7 @@ export class Tab1Page {
 
   pedirCuenta(){
 
-
+    this.servicio.pediCuenta(this.mesa);
 
   }
 

@@ -168,7 +168,21 @@ export class Service {
 
     }
 
-    this.mesa.add("true");
+    let cuenta = {
+      cuenta: true,
+    }
+
+    this.mesa.get().subscribe((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        
+        this.mesa.doc(doc.id).update(cuenta);
+      
+      });
+
+    });
+
+
+    
 
   }
 
