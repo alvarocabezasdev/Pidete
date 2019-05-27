@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="this.mesa">
 
 <ion-list>
 
@@ -33,14 +33,15 @@
 
 </ion-content>
 
+
   <ion-footer>
     <ion-toolbar>
     <div class="pie" >
-       <div class="total">
+       <div class="total" *ngIf="this.mesa">
       <h2><strong>{{totalComanda()}}€</strong></h2>
     </div>
     
-    <ion-button class="boton"  (click)="pedirCuenta()" [disabled]="!listadoPanel.length">Pedir cuenta</ion-button>
+    <ion-button class="boton"  (click)="pedirCuenta()" [disabled]="!this.mesa">Pedir cuenta</ion-button>
  
     </div>
     </ion-toolbar>

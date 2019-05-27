@@ -1,3 +1,4 @@
+import { ToastController } from '@ionic/angular';
 import { Service } from './../servicios/service';
 import { Component } from '@angular/core';
 
@@ -14,7 +15,8 @@ export class Tab1Page {
   listado = [];
   cantidad: number = 0;
 
-  constructor(public servicio: Service){
+  constructor(public servicio: Service,
+              public toastController: ToastController){
     this.mesa = this.getMesa();
 
   }
@@ -27,6 +29,21 @@ export class Tab1Page {
 
   ionViewDidEnter(){
     this.mesa = this.getMesa();
+    console.log(this.mesa);
+
+    if(this.mesa==undefined){
+      console.log(this.listadoPanel.length);
+    }else{
+      this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
+        this.listado = [];
+        querySnapshot.forEach((doc) => {
+          this.listado.push({ id: doc.id, ...doc.data() });
+        });
+  
+        this.listadoPanel = this.listado;
+  
+      });
+    }
 
     this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
       this.listado = [];
@@ -37,6 +54,16 @@ export class Tab1Page {
       this.listadoPanel = this.listado;
 
     });
+  }
+
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 1000,
+      position: 'bottom',
+      color: "success"
+    });
+    toast.present();
   }
 
 
@@ -65,6 +92,9 @@ export class Tab1Page {
   pedirCuenta(){
 
     this.servicio.pediCuenta(this.mesa);
+    this.presentToast("Cuenta pedida");
+    this.servicio.resetLocalMesa();
+    this.listadoPanel = [];
 
   }
 

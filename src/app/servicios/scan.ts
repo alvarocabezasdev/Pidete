@@ -37,7 +37,7 @@ export class Scan {
       this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
       this.servicio.borrarComanda();
       this.navController.navigateRoot("tab1");
-      this.presentToast("Pedido realizado");
+      this.presentToast("Pedido realizado", "success");
   
   
     }else if(!this.mesa){
@@ -51,14 +51,13 @@ export class Scan {
       this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
       this.servicio.borrarComanda();
       this.navController.navigateRoot("tab1");
-      this.presentToast("Pedido realizado");
+      this.presentToast("Pedido realizado", "success");
 
 
     }else{
 
-      this.navController.navigateRoot("tab3");
-      this.presentToast("Escanee el mismo codigo que en el pedido anterior");
-
+      this.presentToast("Escanee el mismo codigo que en el pedido anterior", "danger");
+      this.navController.pop();
     }
 
 
@@ -68,12 +67,12 @@ export class Scan {
   
   }
 
-  async presentToast(msg) {
+  async presentToast(msg, color) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 1000,
-      position: 'top',
-      color: "success"
+      duration: 2000,
+      position: 'bottom',
+      color: color
     });
     toast.present();
   }

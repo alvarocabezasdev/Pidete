@@ -40,7 +40,7 @@ export class Tab2Page {
     const toast = await this.toastController.create({
       message: 'Producto añadido',
       duration: 1000,
-      position: 'top',
+      position: 'bottom',
       color: "success"
     });
     toast.present();
