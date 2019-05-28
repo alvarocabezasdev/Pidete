@@ -24,7 +24,7 @@ export class Scan {
 
   scan(){
       
-  this.barcodeScanner.scan().then(barcodeData => {
+    this.barcodeScanner.scan().then(barcodeData => {
 
 
     this.servicio.getMesa().then((value)=>{
@@ -36,11 +36,11 @@ export class Scan {
 
       this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
       this.servicio.borrarComanda();
-      this.navController.navigateRoot("tab1");
+      this.navController.navigateRoot("tabs/tab1");
       this.presentToast("Pedido realizado", "success");
   
   
-    }else if(!this.mesa){
+    }else if(this.mesa==undefined){
 
       this.servicio.setMesa(barcodeData.text);
       
@@ -50,7 +50,7 @@ export class Scan {
 
       this.servicio.mandarComanda(this.servicio.leerComanda(),barcodeData.text);
       this.servicio.borrarComanda();
-      this.navController.navigateRoot("tab1");
+      this.navController.navigateRoot("tabs/tab1");
       this.presentToast("Pedido realizado", "success");
 
 
@@ -70,8 +70,8 @@ export class Scan {
   async presentToast(msg, color) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
-      position: 'bottom',
+      duration: 1000,
+      position: 'top',
       color: color
     });
     toast.present();

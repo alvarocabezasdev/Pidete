@@ -17,15 +17,38 @@ export class Tab1Page {
 
   constructor(public servicio: Service,
               public toastController: ToastController){
-    this.mesa = this.getMesa();
+
+                this.mesa = this.getMesa();
+                console.log(this.mesa);
+            
+                if(this.mesa==undefined){
+                  console.log(this.listadoPanel.length);
+                }else{
+                  this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
+                    this.listado = [];
+                    querySnapshot.forEach((doc) => {
+                      this.listado.push({ id: doc.id, ...doc.data() });
+                    });
+              
+                    this.listadoPanel = this.listado;
+              
+                  });
+                }
+            
+                this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
+                  this.listado = [];
+                  querySnapshot.forEach((doc) => {
+                    this.listado.push({ id: doc.id, ...doc.data() });
+                  });
+            
+                  this.listadoPanel = this.listado;
+            
+                });
 
   }
 
 
-  ionViewWillEnter(){
-    this.mesa = this.getMesa();
-    
-  }
+
 
   ionViewDidEnter(){
     this.mesa = this.getMesa();
@@ -60,7 +83,7 @@ export class Tab1Page {
     const toast = await this.toastController.create({
       message: msg,
       duration: 1000,
-      position: 'bottom',
+      position: 'top',
       color: "success"
     });
     toast.present();

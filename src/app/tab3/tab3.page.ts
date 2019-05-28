@@ -49,7 +49,7 @@ export class Tab3Page {
     const toast = await this.toastController.create({
       message: msg,
       duration: 1000,
-      position: 'bottom',
+      position: 'top',
       color: 'danger'
     });
     toast.present();
