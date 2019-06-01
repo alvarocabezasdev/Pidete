@@ -20,7 +20,7 @@
 <ion-card *ngFor="let item of listadoPanel;let i = index">
 <div class="card">
   <div class="imagen">
-    <!--<ion-img src="{{item.imagen}}"></ion-img>-->
+    <ion-img src="{{item.imagen}}"></ion-img>
   </div>
 
   <div class="descripcion">
@@ -34,7 +34,7 @@
   </div>
 
   <div class="boton">
-      <ion-img (click)="agregarProductoComanda(item)" src="../assets/imagenes/add.png"></ion-img>
+      <ion-img (click)="agregarProductoComanda(item)" src="../assets/imagenes/add.png"></ion-img> 
   </div>
 
 </div>
