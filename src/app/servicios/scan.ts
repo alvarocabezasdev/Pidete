@@ -67,6 +67,12 @@ export class Scan {
   
   }
 
+    /**
+   * 
+   * @param msg 
+   * @param color 
+   * @return Promise con un mensaje de confirmacion de la accion realizada
+   */
   async presentToast(msg, color) {
     const toast = await this.toastController.create({
       message: msg,

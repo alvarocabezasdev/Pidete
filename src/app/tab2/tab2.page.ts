@@ -36,6 +36,13 @@ export class Tab2Page {
     });
   }
 
+
+    /**
+   * 
+   * @param msg 
+   * @param color 
+   * @return Promise con un mensaje de confirmacion de la accion realizada
+   */
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Producto añadido',
@@ -46,6 +53,11 @@ export class Tab2Page {
     toast.present();
   }
 
+    /**
+   * 
+   * @param msg 
+   * @return Promise con un loading
+   */
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg
@@ -82,6 +94,11 @@ export class Tab2Page {
 
   }
 
+
+    /**
+   * 
+   * @param refresher 
+   */
   doRefresh(refresher) {
     this.servicio.leerListadoProductos().subscribe(querySnapshot => {
         this.listado = [];
@@ -95,6 +112,10 @@ export class Tab2Page {
       });
 }
 
+    /**
+   * 
+   * @param producto 
+   */
   agregarProductoComanda(producto){
 
     let cantidad = 1;

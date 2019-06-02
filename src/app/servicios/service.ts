@@ -33,15 +33,26 @@ export class Service {
 
   //PRODUCTOS
 
+    /**
+   * 
+   * 
+   * @return Observable con el objeto Firestore productos
+   */
   leerListadoProductos(): Observable<firebase.firestore.QuerySnapshot> {
     console.log(this.productos.get());
     return this.productos.get();
   }
 
+   /**
+   * @return Observable con el objeto Firestore productos al añadir un producto
+   */
   agregarRegistro(datos): Promise<firebase.firestore.DocumentReference> {
     return this.productos.add(datos);
   }
 
+   /**
+   * @return Observable con el objeto Firestore productos al borrar un producto
+   */
   borrarRegistro(id): Promise<void>{
     
   return this.productos.doc(id).delete();
@@ -53,12 +64,20 @@ export class Service {
 
   //COMANDA
 
+  /**
+   * @param producto
+   * 
+   */
   agregarProductoComanda(producto){
     
     this.comanda.push(producto);
 
   }
 
+  /**
+   * @return Array con listado de productos de la comanda
+   * 
+   */
   leerComanda(){
     for(var i=0; i<this.comanda.length; i++){
 
@@ -78,6 +97,11 @@ export class Service {
   
   }
 
+  /**
+   * @param listado
+   * @param mesa
+   * 
+   */
   mandarComanda(listado, mesa){
 
     switch(mesa){
@@ -103,11 +127,18 @@ export class Service {
     
   }
 
+  
+
   borrarComanda(){
     
   this.comanda.splice(0,this.comanda.length);
     
 }
+
+  /**
+   * @param item
+   * 
+   */
 
   borrarUnidad(item){
     if(item.cantidad==1){
@@ -122,6 +153,11 @@ export class Service {
     }
   }
 
+    /**
+   * @return Observable con el objeto Firestore productos 
+   * 
+   */
+
   leerComandas(){
     return this.productos.get();
   }
@@ -130,7 +166,11 @@ export class Service {
 
   //MESA
 
-
+   /**
+   * @param mesa
+   * @return Observable con el objeto Firestore mesa 
+   * 
+   */
   leerMesa(mesa):  Observable<firebase.firestore.QuerySnapshot> {
    
     switch(mesa){
@@ -147,6 +187,12 @@ export class Service {
 
   }
 
+   /**
+   * @param mesa
+   * @return Promise con el objeto Firestore mesa al borrar los un producto de la mesa
+   * 
+   */  
+
   borrarMesa(id): Promise<void>{
     
   return this.mesa.doc(id).delete();
@@ -157,14 +203,24 @@ export class Service {
     this.storage.set('mesa', "");
   }
  
-
+   /**
+   * @param mesa
+   * 
+   * 
+   */  
   setMesa(mesa:string){
     
     this.storage.set('mesa', mesa);  
     
   }
 
-  //Obtiene el valor de mesa en local storage y lo setea a mesalocalstorage
+  /**
+   * Obtiene el valor de mesa en local storage y lo setea a mesalocalstorage
+   * @param mesa
+   * @return String con el valor del campo mesa en la base de datos local
+   * 
+   */  
+  
   getMesa(){
 
     return this.storage.get('mesa');
@@ -177,6 +233,10 @@ export class Service {
 
   //CUENTA
 
+    /**
+   * @param mesa
+   * 
+   */  
   pediCuenta(mesa){
 
     switch(mesa){
@@ -203,6 +263,12 @@ export class Service {
     
 
   }
+
+    /**
+   * @param mesa
+   * @return Observable con el objeto Firestore mesa
+   * 
+   */  
 
   cuentaPedida(mesa){
 

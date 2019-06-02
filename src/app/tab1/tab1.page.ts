@@ -79,6 +79,12 @@ export class Tab1Page {
     });
   }
 
+
+    /**
+   * 
+   * @param msg 
+   * @return Promise con un mensaje de confirmacion de la accion realizada
+   */
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
@@ -97,6 +103,12 @@ export class Tab1Page {
     })
   }
 
+  
+  /**
+   * 
+   * @return Number con el valor total de la mesa
+   * 
+   */  
   totalComanda(){
 
     let total:number = 0;

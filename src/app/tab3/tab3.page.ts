@@ -45,6 +45,11 @@ export class Tab3Page {
 
   }
 
+  /**
+   * 
+   * @param msg 
+   * @return Promise con un mensaje de confirmacion de la accion realizada
+   */
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
@@ -55,6 +60,12 @@ export class Tab3Page {
     toast.present();
   }
 
+
+    /**
+   * 
+   * @param msg 
+   * @return Promise con un loading
+   */
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg,
@@ -63,6 +74,12 @@ export class Tab3Page {
     return await myloading.present();
 }
 
+
+  /**
+   * 
+   * @return Number con el valor total de la mesa
+   * 
+   */  
   totalComanda(){
 
     let total:number = 0;
@@ -75,10 +92,20 @@ export class Tab3Page {
 
   }
 
+    /**
+   * 
+   * @return Cantidad
+   * 
+   */  
   getCantidad(){
     return this.cantidad;
   }
 
+  /**
+   * 
+   * @return True o False dependiendo del total de mesa es mayor que 0
+   * 
+   */  
   activarBoton(){
     if(this.totalComanda()>0){
       return false;
@@ -87,6 +114,11 @@ export class Tab3Page {
     }
   }
 
+  /**
+   * 
+   * @param producto
+   * 
+   */  
   borrarUnidad(producto){
 
     this.servicio.borrarUnidad(producto);
