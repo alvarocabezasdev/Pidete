@@ -18,55 +18,14 @@ export class Tab1Page {
   constructor(public servicio: Service,
               public toastController: ToastController){
 
-                this.mesa = this.getMesa();
-                console.log(this.mesa);
-            
-                if(this.mesa==undefined){
-                  console.log(this.listadoPanel.length);
-                }else{
-                  this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
-                    this.listado = [];
-                    querySnapshot.forEach((doc) => {
-                      this.listado.push({ id: doc.id, ...doc.data() });
-                    });
-              
-                    this.listadoPanel = this.listado;
-              
-                  });
-                }
-            
-                this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
-                  this.listado = [];
-                  querySnapshot.forEach((doc) => {
-                    this.listado.push({ id: doc.id, ...doc.data() });
-                  });
-            
-                  this.listadoPanel = this.listado;
-            
-                });
-
   }
 
 
 
 
   ionViewDidEnter(){
-    this.mesa = this.getMesa();
+    this.getMesa();
     console.log(this.mesa);
-
-    if(this.mesa==undefined){
-      console.log(this.listadoPanel.length);
-    }else{
-      this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
-        this.listado = [];
-        querySnapshot.forEach((doc) => {
-          this.listado.push({ id: doc.id, ...doc.data() });
-        });
-  
-        this.listadoPanel = this.listado;
-  
-      });
-    }
 
     this.servicio.leerMesa(this.mesa).subscribe((querySnapshot) => {
       this.listado = [];
@@ -99,8 +58,10 @@ export class Tab1Page {
   getMesa(){
     
     this.servicio.getMesa().then((value)=>{
-      this.mesa = value;
+      this.mesa = value
     })
+
+
   }
 
   

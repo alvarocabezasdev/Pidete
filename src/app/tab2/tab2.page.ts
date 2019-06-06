@@ -100,11 +100,14 @@ export class Tab2Page {
    * @param refresher 
    */
   doRefresh(refresher) {
+
     this.servicio.leerListadoProductos().subscribe(querySnapshot => {
         this.listado = [];
         
         querySnapshot.forEach((doc) => {
+
           this.listado.push({ id: doc.id, ...doc.data() });
+          
         });
         this.listadoPanel = this.listado;
 

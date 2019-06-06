@@ -40,7 +40,7 @@ export class Scan {
       this.presentToast("Pedido realizado", "success");
   
   
-    }else if(this.mesa==undefined){
+    }else if(this.mesa==undefined || this.mesa==""){
 
       this.servicio.setMesa(barcodeData.text);
       
